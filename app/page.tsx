@@ -1,7 +1,6 @@
 import HeroSection from "@/components/landing/hero-section";
 import React from "react";
 import Features from "@/components/landing/features";
-import PricingSection from "@/components/landing/pricing-section";
 
 export default function Home() {
   return (
@@ -9,7 +8,6 @@ export default function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center">
         <HeroSection />
         <Features />
-          <PricingSection />
       </main>
     </div>
   );
