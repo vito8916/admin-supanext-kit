@@ -91,7 +91,7 @@ export async function signIn(formData: FormData) {
         return { error: error.message };
     }
 
-    return { success: true, redirect: "/pricings", message: "Signed in successfully." };
+    return { success: true, redirect: "/dashboard", message: "Signed in successfully." };
 }
 
 export async function resendConfirmationEmail(formData: FormData) {
