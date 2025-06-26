@@ -2,10 +2,9 @@
 
 import * as React from "react"
 import {
-  AudioWaveform,
+
   BookOpen,
   Bot,
-  Command,
   Frame,
   GalleryVerticalEnd,
   Home,
@@ -13,6 +12,7 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  Users,
 } from "lucide-react"
 
 import { NavMain } from "@/components/dashboard/nav-main"
@@ -36,28 +36,17 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Dashboard",
       url: "/dashboard",
       icon: Home,
+      isActive: true,
+    },
+    {
+      title: "Users",
+      url: "/users",
+      icon: Users,
       isActive: true,
     },
     {
@@ -129,19 +118,15 @@ const data = {
       items: [
         {
           title: "General",
-          url: "#",
+          url: "/settings",
         },
         {
-          title: "Team",
-          url: "#",
+          title: "Profile",
+          url: "/settings/profile",
         },
         {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          title: "Security",
+          url: "/settings/security",
         },
       ],
     },
@@ -188,7 +173,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
