@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { User, UserStatus } from "@/types/users";
+import { User } from "@/types/users";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,13 +23,6 @@ function getRoleIcon(role: string) {
     default:
       return <UserIcon className="h-3 w-3" />;
   }
-}
-
-function getStatusFromUser(user: User): UserStatus {
-  if (user.status === null) return 'pending';
-  if (user.status === false) return 'inactive';
-  if (user.subscription_id) return 'active';
-  return 'invited';
 }
 
 function ActionCell({ user }: { user: User }) {
@@ -222,8 +215,7 @@ export const columns: ColumnDef<User>[] = [
       );
     },
     cell: ({ row }) => {
-      const user = row.original;
-      const status = getStatusFromUser(user);
+      const status = row.getValue("status") as string;
       
       const statusConfig = {
         active: { variant: "default" as const, color: "bg-green-100 text-green-800", label: "Active" },
@@ -233,7 +225,7 @@ export const columns: ColumnDef<User>[] = [
         pending: { variant: "outline" as const, color: "bg-yellow-100 text-yellow-800", label: "Pending" },
       };
 
-      const config = statusConfig[status];
+      const config = statusConfig[status as keyof typeof statusConfig];
       
       return (
         <Badge variant={config.variant} className={config.color}>

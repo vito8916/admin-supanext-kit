@@ -17,7 +17,7 @@ import {
 import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, Filter, Plus, UserPlus, SlidersHorizontal } from "lucide-react";
+import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight, Filter, SlidersHorizontal } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
 import {

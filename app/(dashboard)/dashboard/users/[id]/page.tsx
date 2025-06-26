@@ -13,7 +13,6 @@ import {
   Shield, 
   Crown, 
   ShieldCheck, 
-  Calculator,
   ArrowLeft,
   Edit,
   UserX,
@@ -39,8 +38,6 @@ function getRoleIcon(role: string) {
       return <Crown className="h-4 w-4" />;
     case 'manager':
       return <ShieldCheck className="h-4 w-4" />;
-    case 'cashier':
-      return <Calculator className="h-4 w-4" />;
     default:
       return <User className="h-4 w-4" />;
   }
@@ -67,7 +64,7 @@ export default async function UserDetailPage({ params }: UserDetailPageProps) {
   }
 
   const userInitials = user.full_name 
-    ? user.full_name.split(' ').map(n => n[0]).join('').toUpperCase()
+    ? user.full_name.split(' ').map((n: string) => n[0]).join('').toUpperCase()
     : user.id.slice(0, 2).toUpperCase();
 
   const userEmail = user.full_name 

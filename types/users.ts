@@ -16,7 +16,7 @@ export interface User {
     last_four?: string;
     brand?: string;
   } | null;
-  status: boolean | null;
+  status: string | null;
   customer_id: string | null;
   subscription_id: string | null;
   role: string;

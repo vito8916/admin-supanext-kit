@@ -1,9 +1,9 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { User } from "@/types/users";
+import { cache } from "react";
 
-export async function getUsers(): Promise<User[]> {
+export const getUsers = cache(async () => {
   const supabase = await createClient();
   
   const { data: users, error } = await supabase
@@ -31,9 +31,9 @@ export async function getUsers(): Promise<User[]> {
   }
 
   return users || [];
-}
+});
 
-export async function getUserById(id: string): Promise<User | null> {
+export const getUserById = cache(async (id: string) => {
   const supabase = await createClient();
   
   const { data: user, error } = await supabase
@@ -62,9 +62,9 @@ export async function getUserById(id: string): Promise<User | null> {
   }
 
   return user;
-}
+});
 
-export async function getUserStats() {
+export const getUserStats = cache(async () => {
   const supabase = await createClient();
   
   // Get total users
@@ -114,4 +114,4 @@ export async function getUserStats() {
     pendingVerifications: pendingVerifications || 0,
     growthRate: Math.round(growthRate * 10) / 10,
   };
-}
+});
